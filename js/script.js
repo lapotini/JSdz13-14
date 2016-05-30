@@ -59,11 +59,25 @@ var questions = [
 
 
 
-   localStorage.setItem('testQuestions', JSON.stringify(questions));
+   // localStorage.setItem('testQuestions', JSON.stringify(questions));
+   // var test = localStorage.getItem('testQuestions');
+   // test = JSON.parse(test);
+   //
 
-   var test = localStorage.getItem('testQuestions');
-   test = JSON.parse(test);
+   var dataService = {
+     setData: function setData(itemName, value) {
+       return localStorage.setItem(itemName, JSON.stringify(value));
+     },
+     getData: function getData(itemName) {
+       return localStorage.getItem(itemName);
+     }
 
+   };
+
+   dataService.setData('testQuestions', questions);
+   var test = JSON.parse(dataService.getData('testQuestions'));
+
+   
 
    $(function() {
 
